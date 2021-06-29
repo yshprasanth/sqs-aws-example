@@ -21,6 +21,11 @@ public class SQLReceiveMessageRunner implements CommandLineRunner {
             List<Message> messagesList = sqsReceiveMessages.receiveMessages();
             messagesList.forEach(System.out::println);
 
+            for(Message message: messagesList) {
+                String empId = message.getValueForField("empId", String.class).orElse("");
+
+
+            }
             Thread.sleep(waitTimeBetweenPollingInMillis);
         }
     }
